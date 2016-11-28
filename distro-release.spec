@@ -152,6 +152,18 @@ else
 fi
 EOF
 
+
+# (tpg) distribution,product,Vendor,codename,disturl,bugurl,disttag,ansiColor
+
+# give Moondrake GNU/Linux release package a higher priority as it's not
+# installed by default, while the build system explcitly installs, giving
+# issues when trying to prevent this from happening using buildconflict..
+# As long as ABF explicitly installs distro-release-OpenMandriva first,
+# we'll bump Moondrake prio to higher priority to get around it
+# don't remove unless you're a zealot completely oblivious about this issue
+# and rather wait for a better solution to be implemented in ABF
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta (Weekend at Bernies III)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44", Prio=11)}
+
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
 %{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Nitrogen)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
 
