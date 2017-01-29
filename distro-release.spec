@@ -39,14 +39,13 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-# Ugly, but needed for 2015.0 -> 3.0 transition
 Epoch:		2
-Version:	3.1
+Version:	2017.33.0.33
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
-DistEpoch:	3001
-Release:	0.2
+#DistEpoch:	3001
+Release:	0.1
 License:	GPLv2+
 URL:		%{disturl}
 Group:		System/Configuration/Other
@@ -67,13 +66,18 @@ Summary:	%{distribution} release common files
 Group:		System/Configuration/Other
 %rename		rosa-release-common
 %rename		mandriva-release-common
-%rename		opemandriva-release-common
+%rename		opemnandriva-release-common
 %rename		moondrake-release-common
+%rename		mageia-release
+%rename		mageia-release-common
+%rename		mageia-release-Default
 %rename		mandriva-release
 %rename		mandriva-release-Free
 %rename		mandriva-release-One
 %rename		mandriva-release-Powerpack
 %rename		mandriva-release-Mini
+%rename		system-release
+%rename		system-release(%{version})
 # (tpg) older releases provides %{_sysconfdir}/os-release
 Conflicts:	systemd < 37-5
 Requires:	lsb-release
@@ -85,14 +89,12 @@ Requires(pre):	bash
 Provides:	arch(%{_target_cpu})
 Provides:	%{arch_tagged distro-release-common}
 
-# (tpg) get rid of it
-Obsoletes:	distro-release-Moondrake
-
 %description	common
 Common files for %{distribution} release packages.
 
 # build release flavour rpm
-%{python:distro.release_package("OpenMandriva Lx", "OpenMandriva", Prio=12)}
+%{python:distro.release_package("Moondrake GNU/Linux", "Moondrake", Prio=12)}
+%{python:distro.release_package("OpenMandriva Lx", "OpenMandriva")}
 
 %prep
 %setup -q -n %{name}
@@ -162,7 +164,7 @@ EOF
 # we'll bump Moondrake prio to higher priority to get around it
 # don't remove unless you're a zealot completely oblivious about this issue
 # and rather wait for a better solution to be implemented in ABF
-%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta (Weekend at Bernies III)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44", Prio=11)}
+%{python:distro.release_install("Moondrake GNU/Linux", "Moondrake", "Moondrake", "Beta (Weekend at Bernies III)", "http://moondrake.org", "http://moondrake.org", "mdk",ansiColor="1;35;4;44")}
 
 # (tpg) use codename from here https://wiki.openmandriva.org/en/Codename
 %{python:distro.release_install("OpenMandriva Lx", "OpenMandriva", "OpenMandriva", "(Nitrogen)", "http://openmandriva.org", "https://issues.openmandriva.org", "omv", ansiColor="1;43")}
