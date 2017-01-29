@@ -82,7 +82,7 @@ cat > %{buildroot}%{_sys_macros_dir}/"""+Vendor+""".macros << EOF
 %%vendor		"""+Vendor+"""
 %%_vendor		"""+vendor+"""
 %%disttag		"""+disttag+"""
-%%distepoch            %distepoch
+#distepoch            %mdkver
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
