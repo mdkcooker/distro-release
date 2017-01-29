@@ -49,6 +49,7 @@ Version:	2017.33_0.33
 Release:	0.1
 License:	GPLv2+
 URL:		%{disturl}
+BugURL:		http://bugs.mageia.org
 Group:		System/Configuration/Other
 Source0:	%{name}.tar.xz
 Source1:	distro.py
