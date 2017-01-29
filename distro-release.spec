@@ -39,8 +39,9 @@
 
 Summary:	%{distribution} release file
 Name:		distro-release
-Epoch:		2
+Epoch:		1
 Version:	2017.33_0.33
+%define	distepoch %{version}
 # (tpg) something needs to be done to make comparision 3.0 > 2015.0 came true
 # 3001 = 3.1
 # 3001 = 3.2 etc.
